@@ -57,6 +57,13 @@ include 'en.cloudyupdate.php';
 include 'en.getinconf.php';
 
 
+// Clommunity: Microcloud
+//
+// plug/controllers/microcloud.php
+//
+include 'en.microcloud.php';
+
+
 // Clommunity: Tahoe-LAFS
 //
 // plug/controllers/tahoe-lafs.php
