@@ -49,6 +49,12 @@ function stxt($text=null){
 	}
 }
 
+function strong($text=null){
+    if (!is_null($text)){
+        return ('<strong>'.$text.'</strong>');
+    }
+}
+
 function package_not_install($pkg,$des){
 	global $staticFile;
 
