@@ -94,10 +94,6 @@ function addCheckbox($name=null, $label= null, $value = null, $options = null, $
 	$str .="</div>\n";
 
 	return $str;
-
-
-
-
 }
 
 function addButton($options=null){
@@ -140,6 +136,41 @@ function addButton($options=null){
 	return $str;
 }
 
+function addSelect($name=null, $label= null, $value = null, $options = null, $attributes = null, $tooltip = null, $nobr = null){
+	if (!is_null($name)){
+		$options['name'] = $name;
+	}
+
+	$str = "";
+	$str .= "<div class='control-group'>\n";
+	$str .="<label class='control-label'>$label:</label>\n";
+	$str .="<div class='controls'>\n";
+	$str .= "<select ";
+	if (is_array($options)){
+		foreach($options as $k=>$v){
+			$str .= " $k='".$v."'";
+		}
+	}
+	if (!is_null($attributes))
+		$str .= $attributes;
+	$str .= ">\n";
+
+	foreach ($value as $k => $v) {
+		$str .= "<option value='".$k."'>".$v."</option>";
+	}
+
+	$str .= "</select>";
+
+	if (!is_null($tooltip))
+		if (is_null($nobr))
+			$str .= '<br/>';
+		$str .= '<span style="font-size: smaller;"><span style="font-size: smaller;">'.$tooltip.'</span></span>';
+	$str .="</div>\n";
+	$str .="</div>\n";
+
+	return $str;
+}
+
 function addSubmit($options=null){
 
 	$default = array(
@@ -153,6 +184,41 @@ function addSubmit($options=null){
 	$o = array_merge($default,$options);
 
 	$str = addButton($o);
+
+	return $str;
+}
+
+function addTextarea($name=null, $label= null, $value = null, $options = null, $attributes = null, $tooltip = null, $nobr = null){
+	if (!is_null($name)){
+		$options['name'] = $name;
+	}
+
+	$str = "";
+	$str .= "<div class='control-group'>\n";
+	$str .="<label class='control-label'>$label:</label>\n";
+	$str .="<div class='controls'>\n";
+	$str .= "<textarea ";
+	if (is_array($options)){
+		foreach($options as $k=>$v){
+			$str .= " $k='".$v."'";
+		}
+	}
+	if (!is_null($attributes))
+		$str .= $attributes;
+	$str .= ">\n";
+
+	foreach ($value as $k => $v) {
+		$str .= "<option value='".$k."'>".$v."</option>";
+	}
+
+	$str .= "</textarea>";
+
+	if (!is_null($tooltip))
+		if (is_null($nobr))
+			$str .= '<br/>';
+		$str .= '<span style="font-size: smaller;"><span style="font-size: smaller;">'.$tooltip.'</span></span>';
+	$str .="</div>\n";
+	$str .="</div>\n";
 
 	return $str;
 }

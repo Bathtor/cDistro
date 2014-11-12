@@ -62,7 +62,7 @@ function index(){
 
 function createMicrocloud()
 {
-	global $MICROCLOUD_CONF;
+    global $MICROCLOUD_CONF;
 	global $staticFile;
     $disabled = '';
 
@@ -73,33 +73,19 @@ function createMicrocloud()
 	$page .= hlc(t("microcloud_title"));
 	$page .= hl(t("microcloud_subtitle"),4);
 	$page .= par(t("microcloud_create_description"));
-/*
-    if (isUp($variables['NETWORK_NAME']))
-        $disabled = "disabled";
 
-    $page .= txt(t('getinconf_settings'));
 	$page .= createForm(array('class'=>'form-horizontal'));
-	$page .= addInput('GTC_SERVER_URL',t('getinconf_form_server_url'),$variables,array('type'=>'url', 'required'=>''),$disabled,t('getinconf_form_server_url_help'));
-	$page .= addInput('NETWORK_NAME',t('getinconf_form_microcloud_network'),$variables,array('type'=>'text', 'required'=>''),$disabled,t('getinconf_form_microcloud_network_help'));
-	$page .= addInput('NETWORK_KEY',t('getinconf_form_network_password'),$variables,array('type'=>'password', 'required'=>''),$disabled,t('getinconf_form_network_password_help'));
-	$page .= addInput('INTERNAL_DEV',t('getinconf_form_community_network_device'),$variables,array('type'=>'text', 'required'=>''),$disabled,t('getinconf_form_community_network_device_help'));
-	if (!isUp($variables['NETWORK_NAME']))
-	   $submitButtons .= addSubmit(array('label'=>t('getinconf_button_save')));
+	$page .= addInput('MICROCLOUD_NAME', t('microcloud_create_form_name'), '', array('type'=>'text', 'required'=>'', 'placeholder'=>'My microcloud', 'maxlength'=>"64", 'pattern'=>".{3,64}"), $disabled,t('microcloud_create_form_name_help'));
+    for( $i=0; $i<=255; $i++) { $networks['192.168.'.$i.'.0'] = '192.168.'.$i.'.0'; };
+	$page .= addSelect('MICROCLOUD_NETWORK',t('microcloud_create_form_name_help'),$networks,'','',t('microcloud_create_form_network_help'));
+	$page .= addInput('MICROCLOUD_NETMASK',t('microcloud_create_form_netmask'),null,array('type'=>'text', 'required'=>'', 'value'=>"255.255.255.0", 'disabled'=>''),'',t('microcloud_create_form_netmask_help'));
+	$page .= addTextarea('MICROCLOUD_DESC',t('microcloud_create_form_desc'),$null,array('type'=>'text', 'placeholder'=>'A public microcloud in our Community Network'),'',t('microcloud_create_form_desc_help'));
 
-    $page .= txt(t('getinconf_tinc_status'));
-	if (isUp($variables['NETWORK_NAME'])){
-		$page .= "<div class='alert alert-success text-center'>".t('getinconf_tinc_status_running')."</div>\n";
-		$buttons .= addButton(array('label'=>t('getinconf_button_stop'),'class'=>'btn btn-danger','href'=>'getinconf/stop'));
-		$buttons .= addButton(array('label'=>t('getinconf_button_interface'), 'href' => 'getinconf/interfaceStatus/'.$variables['NETWORK_NAME']));
-	} else {
-		$page .= "<div class='alert alert-error text-center'>".t('getinconf_tinc_status_stopped')."</div>\n";
-		$buttons .= addButton(array('label'=>t('getinconf_button_start'),'class'=>'btn btn-success', 'href'=>'getinconf/start'));
-		$buttons .= addButton(array('label'=>t('getinconf_button_uninstall'),'class'=>'btn btn-danger', 'href'=>'getinconf/uninstall'));
-	}
-    */
+	$buttons .= addButton(array('label'=>t('microcloud_button_back_microcloud'),'class'=>'btn btn-default', 'href'=>$staticFile.'/tahoe-lafs'));
+    $buttons .= addSubmit(array('label'=>t('microcloud_create_button_submit'),'class'=>'btn btn-success', 'href'=>$staticFile.'/microcloud/createMicrocloud'));
+
     $page .= $buttons;
 	return(array('type' => 'render','page' => $page));
-
 }
 
 /*
