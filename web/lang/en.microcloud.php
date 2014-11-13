@@ -15,6 +15,14 @@ addS ("microcloud_role_alert_master_after","");
 addS ("microcloud_role_alert_client_before","This Cloudy instance belongs to the microcloud");
 addS ("microcloud_role_alert_client_after","");
 addS ("microcloud_create_description","This page allows you to create a new microcloud in your Community Network (CN). You can choose to make it public and announce it on your CN or to keep it private. Additionally, access to the microcloud can be restricted by means of a shared password.");
+addS ("microcloud_create_form_name","Microcloud name");
+addS ("microcloud_create_form_name_placeholder","Green Valley CN µCloud");
+addS ("microcloud_create_form_name_help","The name of the microcloud (3 characters minimum). Use something to identify it and distinguish it from the others.");
+addS ("microcloud_create_form_desc","Microcloud description");
+addS ("microcloud_create_form_desc_help","An optional description for your microcloud, specifying your community, the purpose of the microcloud, etc.");
+addS ("microcloud_create_form_desc_placeholder","The public microcloud of the Green Valley Community Network");
 
+addS ("microcloud_create_form_network","Microcloud network");
+addS ("microcloud_create_form_network_help",'Cloudy instances in a microcloud are connected between them by a layer 2 virtual network based on <a href="http://tinc-vpn.org">tinc-vpn 🔗</a> My microcloud');
 
 ?>
