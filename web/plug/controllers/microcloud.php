@@ -78,8 +78,8 @@ function createMicrocloud()
 	$page .= addInput('MICROCLOUD_NAME', t('microcloud_create_form_name'), '', array('type'=>'text', 'required'=>'', 'placeholder'=>t("microcloud_create_form_desc_placeholder"), 'maxlength'=>"64", 'pattern'=>".{3,64}"), $disabled,t('microcloud_create_form_name_help'));
     $page .= addTextarea('MICROCLOUD_DESC',t('microcloud_create_form_desc'),$null,array('type'=>'text', 'placeholder'=>t("microcloud_create_form_desc_placeholder")),'',t('microcloud_create_form_desc_help'));
 
-    for( $i=0; $i<=255; $i++) { $networks['192.168.'.$i.'.0'] = '192.168.'.$i.'.0'; };
-	$page .= addSelect('MICROCLOUD_NETWORK',t('microcloud_create_form_network'),$networks,$disabled,'',t('microcloud_create_form_network_help'),'','192.168.'.rand(0,255).'.0');
+    for( $i=0; $i<=255; $i++) { $networks['192.168.'.$i.'.0'] = '192.168.'.$i.'.0/24'; };
+    $page .= addSelect('MICROCLOUD_NETWORK',t('microcloud_create_form_network'),$networks,$disabled,'',t('microcloud_create_form_network_help'),'','192.168.'.rand(0,255).'.0');
 	$page .= addInput('MICROCLOUD_NETMASK',t('microcloud_create_form_netmask'),null,array('type'=>'text', 'required'=>'', 'value'=>"255.255.255.0", 'disabled'=>''),'',t('microcloud_create_form_netmask_help'));
 
 
